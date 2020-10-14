@@ -24,4 +24,7 @@ With the possibility of uploading themes, images of tickets area for support, ac
 
 News sampling offered by the administrator (s) to inform the user, including maintenance area.
 
-Demo: https://demo.x3host.ml Installation: https://youtu.be/rmIS3mCugJ4
+Demo: https://demo.x3host.ml
+Userdemo: demo1 Passdemo: demo1
+
+Installation: https://youtu.be/rmIS3mCugJ4
