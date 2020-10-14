@@ -1,4 +1,4 @@
-Einet Anake WHM 5.2.0.30 exclusivo para mofh
+Einet Anake WHM 5.2.0.30 exclusive to MOFH
 
 Next I will explain a little about what this mini CMS based on php, smarty php, html, javascript is about.
 
