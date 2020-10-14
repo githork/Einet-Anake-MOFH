@@ -1,0 +1,83 @@
+@charset "utf-8";
+/* CSS Document */
+.img {
+	margin:10px auto;
+	display:block;
+	background:url('../img/einet_graphic.png');
+	width: 470px;
+	height:430px;
+}
+#aviso-box h1 {
+	font-size:1.8em;
+	text-transform:uppercase;
+}
+#aviso-box h2 {
+	margin-bottom:20px;
+}
+#get-time {
+	display:block;
+	margin:5px auto;
+	padding:5px;
+	font-family:"Lucida Console", Monaco, monospace;
+	font-size:13px;
+	width:400px;
+	background:#000000;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	color:#C0C0C0;
+}
+#get-time strong {
+	color:#C0C0C0;
+	font-weight:normal;
+}
+#get-time ul {
+	min-height:45px;
+	display:block;
+	margin:0;
+}
+#get-time li {
+	float:left;
+	padding:5px;
+	padding-bottom:0;
+	display:block;
+	margin:0;
+	width:25%;
+	text-align:center;
+}
+#get-time b {
+	display:block;
+	font-weight:normal;
+	text-transform:uppercase;
+}
+#get-time p {
+	font-size:14px;
+	display:block;
+	margin:0;
+}
+#get-time i {
+	font-style:normal!important;
+	animation-name: parpadeo;
+	animation-duration: 1.0s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	-webkit-animation-name:parpadeo;
+	-webkit-animation-duration: 1.0s;
+	-webkit-animation-timing-function: linear;
+	-webkit-animation-iteration-count: infinite;
+}
+@-moz-keyframes parpadeo {  
+  0% { opacity: 1; }
+  50% { opacity: 0.0; }
+  100% { opacity: 1; }
+}
+@-webkit-keyframes parpadeo {  
+  0% { opacity: 1; }
+  50% { opacity: 0.0; }
+   100% { opacity: 1; }
+}
+@keyframes parpadeo {  
+  0% { opacity: 1; }
+   50% { opacity: 0.0; }
+  100% { opacity: 1; }
+}

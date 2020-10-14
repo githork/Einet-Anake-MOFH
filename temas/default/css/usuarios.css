@@ -1,0 +1,212 @@
+@charset "utf-8";
+/* CSS Document */
+.cont-box {
+	text-align:left;
+}
+#filter-users {
+	padding:10px;
+}
+#filter-users label {
+	display:block;
+	font-weight:500;
+	margin-bottom:10px;
+	cursor:pointer;
+}
+#filter-users .select {
+	width:100%;
+	margin:5px 0px;	
+}
+#filter-users select {
+	width:100%;
+}
+#filter-users #filter {
+	margin:10px 0px;
+	width:100%;
+}
+#result-users {
+	font-size: 13px;
+	font-weight:550;
+	display: block;
+	padding: 8px;
+    border: double #FFFFFF;
+    background:#F1F1F1;
+}
+#result-users i {
+	font-weight:bold;
+}
+#users-all {
+	margin:10px 0px;
+}
+#card-user {
+	width:49.7%;
+	float:left;
+	margin:0 1px 5px 1px;
+	padding:0;
+	background:#FFFFFF;
+	border:1px solid #E6E6E6;
+	-moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+#card-user:nth-child(2n+2) {
+	float:right;
+}
+#card-user h4 {
+	padding:10px 8px;
+	display:block;
+	margin-bottom:2px;
+	height:40px;
+}
+#card-user #rank {
+	float:left;
+	margin-right:5px;
+}
+#card-user .card-nick {
+	display:inline-block;
+	font-weight:bold;
+	text-transform:capitalize;
+	overflow:hidden;
+    width: 89%;
+    height: 20px;
+    float: left;
+}
+.card-datos {
+	padding:8px;
+	display:block;
+}
+.card-tools {
+	float:left;
+	width:75px;
+	min-height:115px;
+	display:block;
+	margin-bottom:10px;
+	text-align:center;
+}
+.card-tools .avatar {
+	width:75px;
+	height:75px;
+	display:block;
+	-moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+	padding:2px;
+}
+.card-tools .avatar:hover {
+	zoom: 1;
+	filter: alpha(opacity=80);
+	opacity: 0.8;
+}
+.card-tools #t1-follow, .card-tools #t1-mesage {
+	width:47%;
+	display:inline-block;
+	padding:4px;
+	margin:5px 0;
+	font-size:11px;
+	webkit-box-shadow:none;
+    box-shadow:none;
+    -webkit-transition:none;
+}
+.card-info {
+	float:left;
+	width:70%;
+	margin:0 10px 10px 10px;
+	min-height:115px;
+}
+.card-info ul {
+	display:block;
+}
+.card-info li {
+	width:100%;
+	height:23px;
+	padding:3px 4px;
+	display:block;
+	font-size:11px;
+	color:#888DA8;
+	text-transform:capitalize;
+	border-top:1px solid #E6E6E6;
+	overflow:hidden;
+}
+.card-info li i {
+	font-size:11px;
+}
+.card-info li b {
+	font-weight:bold;
+	display:inline-block;
+	margin:0 3px;
+}
+.card-info li font {
+	cursor:pointer;
+}
+.card-info .msg {
+	text-transform:inherit;
+}
+.card-info a {
+	color:#E74C3C;
+	font-weight:600;
+}
+.card-info .send-email {
+	text-decoration:none;
+}
+.card-info .send-email:hover {
+	color:#666666;
+}
+.card-info #status {
+	position:relative;
+	right:none;
+	width:11px;
+	height:11px;
+	display:inline-block;
+	margin-left:5px;
+	margin-bottom:-2px;
+	cursor:pointer;
+}
+/************************************************************************************
+  MEDIA QUERIES
+*************************************************************************************/
+/* Dispositivos de pantallas min 837px max 1024px */
+@media screen and (min-width : 837px) and (max-width : 1024px) {
+#card-user {
+	width:49.6%;
+}
+.card-info {
+	width:67%;
+}
+.card-tools, .card-info {
+	float:inherit;
+	margin:0px auto;
+	margin-bottom:10px;
+}
+}
+/* Dispositivos de pantallas min 426px max 836px */
+@media screen and (min-width : 426px) and (max-width : 836px) {
+#card-user {
+	display:block;
+	width:100%;
+	float:left!important;
+}
+.card-info {
+	width:78%;
+}
+}
+/* Dispositivos de pantallas min 426px max 768px */
+@media screen and (min-width : 426px) and (max-width : 768px) {
+.card-info {
+	width:73.8%;
+}	
+}
+/* Dispositivos de pantallas min 320px max 425px */
+@media screen and (min-width : 320px) and (max-width : 425px) {
+#card-user {
+	display:block;
+	width:100%;
+	float:left!important;
+}
+.card-info {
+	width:90%;
+}
+.card-tools, .card-info {
+	float:inherit;
+	margin:0px auto;
+	margin-bottom:10px;
+}
+}

@@ -1,0 +1,74 @@
+## Manejo de errores de Apache. Cuando se produzca uno de estos errores, redirigimos a una pagina especial desarrollada por nosotros.
+
+# PAGINAS DE ERRORES
+ErrorDocument 500 /index.php?w=error&action=500
+ErrorDocument 404 /index.php?w=error&action=404
+ErrorDocument 403 /index.php?w=error&action=403
+ErrorDocument 401 /index.php?w=error&action=401
+ErrorDocument 400 /index.php?w=error&action=400
+  
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+ 
+Options +FollowSymLinks
+# Evitar escaneos y cualquier intento de manipulación malintencionada
+# de la URL. Con esta regla es imposible lanzar ataques de inyección (SQL, XSS, etc)
+RewriteCond %{HTTP_USER_AGENT} ^$ [OR]
+RewriteCond %{HTTP_USER_AGENT} ^(-|\.|') [OR]
+RewriteCond %{HTTP_USER_AGENT} ^(.*)(<|>|%3C|%3E)(.*) [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} ^(java|curl|wget)(.*) [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} ^(.*)(libwww-perl|libwwwperl|snoopy|curl|wget|winhttp|python|nikto|scan|clshttp|archiver|loader|email|harvest|fetch|extract|grab|miner|suck|reaper|leach)(.*) [NC,OR]
+ 
+RewriteCond %{REQUEST_URI} ^(/,|/;|/<|/>|/'|/`|/%2C|/%3C|/%3E|/%27|/////) [NC,OR]
+RewriteCond %{HTTP_REFERER} ^(.*)(%00|%08|%09|%0A|%0B|%0C|%0D|%0E|%0F|%2C|<|>|'|%3C|%3E|%26%23|%27|%60)(.*) [NC,OR]
+RewriteCond %{QUERY_STRING} ^(.*)(%00|%08|%09|%0A|%0B|%0C|%0D|%0E|%0F|%2C|%3C|%3E|%27|%26%23|%60)(.*) [NC,OR]
+RewriteCond %{QUERY_STRING} ^(.*)('|-|<|>|,|/|\\|\.a|\.c|\.t|\.d|\.p|\.i|\.e|\.j)(.*) [NC,OR]
+RewriteCond %{HTTP_COOKIE} ^(.*)(<|>|'|%3C|%3E|%27)(.*) [NC]
+ 
+## Evitar que se liste el contenido de los directorios
+Options All -Indexes
+## Lo mismo que lo anterior
+IndexIgnore *
+# Protegerse contra los ataques DOS limitando el tamaño de subida de archivos
+LimitRequestBody 10240000
+
+# IPS BLOQUEADAS EJEMPLOS
+#order allow,deny
+#deny from 12.34.56.78
+#allow from all
+
+# INDEX
+RewriteRule ^$ index.php?w=principal [QSA,L]
+RewriteRule ^index.php$ index.php?w=principal [QSA,L]
+
+# HISTORIAL DE MODERACION
+RewriteRule ^panel/buscador/$ data/php/panel.php?action=buscador [QSA,L]
+
+# ADMIN
+RewriteRule ^admin/([A-Za-z0-9_-]+)/pagina/([0-9]+)$ data/php/admin.php?action=$1&pagina=$2 [QSA,L]
+RewriteRule ^admin/ipinfo/([0-9.]+)$ data/php/admin.php?action=ipinfo&ip=$1 [QSA,L]
+
+# HERRAMIENTAS
+RewriteRule ^social/([0-9]+)$ user-login_social.php?id=$1 [QSA,L]
+RewriteRule ^salir/$ user-salir.php [QSA,L]
+RewriteRule ^activar/([0-9]+)/([A-Za-z0-9_-][^/]+)/([A-Za-z0-9_-][^/]+)$ data/php/activar.php?type=$1&email=$2&hash=$3 [QSA,L]
+RewriteRule ^upload/$ data/php/upload.php [QSA,L]
+RewriteRule ^tools/([A-Za-z0-9_-]+)$ data/php/agregar.php?action=$1 [QSA,L]
+RewriteRule ^tools/([A-Za-z0-9_-]+)/$ data/php/agregar.php?action=$1 [QSA,L]
+RewriteRule ^tools/([A-Za-z0-9_-]+)/([0-9]+)/$ data/php/agregar.php?action=$1&post_id=$2 [QSA,L]
+RewriteRule ^usuarios/pagina/([0-9]+)/(.*)$ data/php/usuarios.php?pagina=$1$2 [QSA,L]
+
+# EXTRAS
+RewriteRule ^([A-Za-z0-9_-]+).php$ data/php/req_files.php?action=$1 [QSA,L]
+RewriteRule ^([A-Za-z0-9_-]+)$ data/php/$1.php?action=$2 [QSA,L]  
+RewriteRule ^([A-Za-z0-9_-]+)/$ data/php/$1.php?action=$2 [QSA,L]
+RewriteRule ^([A-Za-z0-9_-]+)/([A-Za-z0-9_-]+)$ data/php/$1.php?action=$2 [QSA,L]
+RewriteRule ^([A-Za-z0-9_-]+)/([A-Za-z0-9_-]+)/$ data/php/$1.php?action=$2 [QSA,L]
+RewriteRule ^([A-Za-z0-9_-]+)/([A-Za-z0-9_-]+)/([0-9]+)$ data/php/$1.php?action=$2&obj_id=$3 [QSA,L]
+
+# NO PERMITIR LA DESCARGA DE ARCHIVOS .TPL
+<FilesMatch "\.(htaccess|ini|log|cfg|tpl|json)$">
+Order Allow,Deny
+Deny from all
+</FilesMatch>

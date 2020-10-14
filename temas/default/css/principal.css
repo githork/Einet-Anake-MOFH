@@ -1,0 +1,47 @@
+@charset "utf-8";
+/* CSS Document */
+#module-left {
+	padding:10px;
+}
+.estadisticas .cont-box {
+    padding: 10px 0px;
+}
+.users_visita {
+	padding:3px;
+	font-size:14px;
+	width:24.7%;
+	min-height:10px;
+	display:inline-block;
+	text-align:center;
+	border-right:1px solid #E9E9E9;
+	color:#E74C3C;
+	cursor:pointer;
+}
+.users_visita:nth-child(1n+4) {
+	border-right:0;
+}
+.users_visita span {
+	display:block;
+	font-weight:500;
+}
+.users_visita h5 {
+	font-weight:500;
+	margin:0;
+	color:#E74C3C;
+	font-size: 13px;
+}
+.users_posts, .users_reg {
+	margin:3px;
+	width:132px;
+	height:50px;
+	font-size:13px;
+	text-align:center;
+	color:#555;
+}
+.users_posts {
+	float:left;
+	border-right:1px solid #F3F3F3;
+}
+.users_reg {
+	float:right;
+}

@@ -1,0 +1,210 @@
+@charset "utf-8";
+/* CSS Document */
+.mon-ul li {
+	color:#888DA8;
+	display:block;
+	padding: 10px 5px;
+    font-size: 13px;
+	font-weight:550;
+    text-align: left;
+}
+.mon-ul li:hover {
+	color:#E74C3C;
+	background: rgba(24, 178, 232, 0.06);
+}
+.mon-ul p {
+	color:#888DA8;
+	display:block;
+	padding: 10px 5px;
+    font-size: 13px;
+    text-align: left;
+}
+.mon-ul label {
+	color:#E74C3C;
+	display:block;
+	padding: 10px 5px;
+    font-size: 13px;
+    text-align: left;
+	font-weight:630;
+}
+.mon-ul li .monac_icons, .n-preview .monac_icons {
+	float: right;
+	padding:1px!important;
+    font-size: 13px!important;
+	width:20px!important;
+	height:20px!important;
+	text-align: center;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+.title-box .mark-r {
+	float:right;
+	padding: 9px;
+	color: #666666;
+	font-weight: 560;
+}
+.items-all {
+	display:block;
+	text-align:left;
+}
+.items-all #ntf-item {
+	display:block;
+	height: 68px;
+    padding: 5px;
+    background: #FFFFFF;
+    border: 1px solid #E6E6E6;
+	-moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    margin: 3px 0;
+}
+.items-all #ntf-item:hover {
+    background: rgba(24, 178, 232, 0.06);
+}
+.items-all .no-load {
+    background: rgba(24, 178, 232, 0.06)!important;
+    border-color: #d2eaf3!important;
+}
+.items-all .avatar {
+	width: 46px;
+    height: 46px;
+    float: left;
+    margin: 5px 5px 5px 0;
+}
+.items-all img {
+	width: 46px;
+    height: 46px;
+	-moz-border-radius: 290486px;
+    -webkit-border-radius: 290486px;
+    border-radius: 290486px;
+    background-color: #F1F1F1;
+}
+#ntf-right {
+	font-size: 13px;
+    display: block;
+	position: relative;
+    float: right;
+    height: 18px;
+    cursor: pointer;
+}
+#ntf-right .icon-more-vertical {
+    font-size: 14px;
+    color: #E74C3C;
+    font-weight: 700;
+}
+#ntf-right #mini-tools {
+	position:absolute;
+	background:#FFFFFF;
+	min-width:140px;
+	display:none;
+	-moz-border-radius:3px;
+    -webkit-border-radius:3px;
+    border-radius:3px;
+    box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
+    padding: .3rem;
+	z-index: 40;
+	top:100%;
+	right:0;
+}
+#ntf-right:hover #mini-tools {
+	display:block;
+}
+#ntf-right #mini-tools li {
+	float:left;
+}
+#ntf-right #mini-tools li:hover {
+	background:rgba(24, 178, 232, 0.06);
+}
+#ntf-right #mini-tools li i {
+	display:block;
+	font-size:14px;
+	text-align:center;
+}
+#ntf-right #mini-tools li p {
+	display:block;
+	text-align:center;
+	font-size:12px;
+	font-weight:500;
+	color:#888DA8;
+	cursor:pointer;
+}
+#ntf-right .icon-check-circle, #ntf-right .icon-circle {
+	color:#1DC028;
+}
+#ntf-right .icon-trash-2 {
+	color:#E74C3C;
+}
+#ntf-right:hover #mini-tools {
+	display:block;
+}
+.item-right {
+    float: left;
+	font-size:13px;
+    display: block;
+    width: 88%;
+    height: 56px;
+}
+.item-right .n-title {
+	display: block;
+    height: 18px;
+    overflow: hidden;
+	text-transform: capitalize;
+}
+.item-right .n-date {
+    font-size: 12px;
+    color: #888DA8;
+	text-transform:none;
+}
+.item-right .n-title a {
+	font-weight: bold;
+	color: #00AEEF;
+	text-decoration:none!important;
+}
+.title-box .mark-r:hover, .item-right .n-title a:hover, .n-preview a:hover {
+	color:#E74C3C;
+}
+.item-right .n-preview {
+	font-size:13px;
+	margin-top:2px;
+	display: block;
+    max-height: 36px;
+    overflow: hidden;
+}
+.n-preview .monac_icons {
+	float:left;
+	margin-right:3px;
+}
+.n-preview a {
+	color:#00AEEF;
+	font-style:italic;
+	font-weight:630;
+	margin-left:3px;
+}
+/************************************************************************************
+  MEDIA QUERIES
+*************************************************************************************/
+/* Dispositivos de pantallas min 837px max 1024px */
+@media screen and (min-width : 837px) and (max-width : 1024px) {
+.item-right {
+	width:84%;
+}	
+}
+/* Dispositivos de pantallas min 426px max 836px */
+@media screen and (min-width : 426px) and (max-width : 836px) {
+.item-right {
+	width:79%;
+}
+}
+/* Dispositivos de pantallas min 320px max 425px */
+@media screen and (min-width : 320px) and (max-width : 425px) {
+.title-box .mark-r {
+	display:none;
+}
+.item-right {
+	width:70%;
+}
+#mini-tools .is-6 {
+	width:50%;
+}	
+}
