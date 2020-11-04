@@ -84,10 +84,10 @@ class tsPanel {
 	elseif(!preg_match("/\.([a-zA-Z0-9]+)$/i", $tsData['extension'])) 
 	return '0: You must add a valid extension for your domain..';
 	
-	elseif(!mb_ereg("^([a-zA-Z0-9]+).([a-zA-Z0-9-]+).([a-zA-Z]{2,4})$", $dominio)) 
+	elseif(!mb_ereg("^([a-zA-Z0-9]+).([a-zA-Z0-9]+).([a-zA-Z0-9-]+).([a-zA-Z]{2,4})$", $dominio)) 
 	return '0: The domain does not have a valid extension...';
 	
-	elseif(preg_match("/([a-z0-9-]+)\.(tk|x3host.ml)$/i", $dominio)) 
+	elseif(preg_match("/([a-z0-9-]+)\.(tk)$/i", $dominio)) 
 	return '0: The domain extension is not allowed on this server...';
 	
 	elseif(strlen($dominio) > 65) 
