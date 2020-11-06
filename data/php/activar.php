@@ -53,6 +53,9 @@
    'new_pass' => $tsCore->setProtect($_POST['new_pass']),
    );
    
+   include EA_CLASS.'c.panel.php';
+   $tsPanel = new tsPanel();
+   
    include EA_CLASS.'c.registro.php';
    $tsRegistro = new tsRegistro();
    $tsInfo = $tsRegistro->validation_code($tsData);
