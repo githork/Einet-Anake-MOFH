@@ -613,6 +613,9 @@ class tsUser {
 	elseif(empty($tsData['user_pass'])) 
 	return '0: Remember to write down a password before saving..';
 	
+	elseif(mb_ereg("[^a-zA-Z0-9_]", $tsData['user_pass'])) 
+	return '0: The password only allows uppercase and lowercase letters, numbers and _';
+	
 	elseif(strlen($tsData['user_pass']) < 5 || strlen($tsData['user_pass']) > 20) 
 	return '0: The password must be between 5 and 20 characters long..';
 	
@@ -978,10 +981,10 @@ class tsUser {
 	if($data['user_id'] > 0) {
 	//--> SI EL USUARIO YA VINCULO UNA CUENTA, LE CONCEDEMOS LA SESION.
 	$data['social'] = unserialize($data['user_social_login']);#extraemos datos.
-	$dataApi['user_hash'] = $tsCore->setProtect($tsCore->get_encrypt($dataApi['user_social'].$dataApi['user_id'].'#'.$data['user_id']));#code hash
+	$dataApi['user_hash'] = $tsCore->setProtect($tsCore->get_encrypt($dataApi['user_social'].$dataApi['user_id'].'_'.$data['user_id']));#code hash
 	
 	// Todos los datos coinciden?
-	if(($data['social'][$pref]['client'] != $dataApi['user_id']) || ($data['social'][$pref]['email'] != $dataApi['user_email']) || ($data['social'][$pref]['hash'] != $dataApi['user_hash']) || ($data['social'][$pref]['id_'] != '#'.$data['user_id']) || ($data['user_activo'] != 1)) 
+	if(($data['social'][$pref]['client'] != $dataApi['user_id']) || ($data['social'][$pref]['email'] != $dataApi['user_email']) || ($data['social'][$pref]['hash'] != $dataApi['user_hash']) || ($data['social'][$pref]['id_'] != '_'.$data['user_id']) || ($data['user_activo'] != 1)) 
 	return '0: Your account data couldn\'t be processed. <b>Try again</b>, if you are still having problems contact the administration.';
 	//
 	else {
@@ -1017,11 +1020,11 @@ class tsUser {
 	if($data['user_id'] > 0) {
 	// Extraemos datos, si ya ha configurado con otra red social.
 	$data_social = unserialize($data['user_social_login']);
-	$data_social[$pref]['id_'] = '#'.$data['user_id'];
+	$data_social[$pref]['id_'] = '_'.$data['user_id'];
 	$data_social[$pref]['social'] = $pref;
 	$data_social[$pref]['client'] = $dataApi['user_id'];
 	$data_social[$pref]['email'] = $dataApi['user_email'];
-	$data_social[$pref]['hash'] = $tsCore->get_encrypt($dataApi['user_social'].$dataApi['user_id'].'#'.$data['user_id']);
+	$data_social[$pref]['hash'] = $tsCore->get_encrypt($dataApi['user_social'].$dataApi['user_id'].'_'.$data['user_id']);
 	$data_social[$pref]['registro'] = $dataApi['user_registro'];
 	$data_social = serialize($data_social);#unimos datos de nuevo.
 
@@ -1080,15 +1083,15 @@ class tsUser {
 	// Agregamos a social.
 	$social_ = array(
 	$pref => array(
-	'id_' => '#'.$new_data['user_id'], 
+	'id_' => '_'.$new_data['user_id'], 
 	'social' => $pref, 
 	'client' => $dataApi['user_id'], 
 	'email' => $dataApi['user_email'],
-	'hash' => $tsCore->setProtect($tsCore->get_encrypt($dataApi['user_social'].$dataApi['user_id'].'#'.$new_data['user_id'])), 
+	'hash' => $tsCore->setProtect($tsCore->get_encrypt($dataApi['user_social'].$dataApi['user_id'].'_'.$new_data['user_id'])), 
 	'registro' => $dataApi['user_registro'],
 	));
 	$social__ = serialize($social_);#creamos el serialize.
-	$new_data['user_password'] = $tsCore->get_encrypt($social_[$pref]['id_'].'*#'.$dataApi['user_nick']);#contraseña
+	$new_data['user_password'] = $tsCore->get_encrypt($social_[$pref]['id_'].'_'.$dataApi['user_nick']);#contraseña
 	
 	// Actualizamos social y la contraseña.
 	if($tsCore->is_serialized($social__) == 1) {
