@@ -121,6 +121,9 @@ class tsRegistro {
 	elseif(strlen($tsData['user_pass']) < 5 || strlen($tsData['user_pass']) > 20)
 	return '0: Eh! the password must have 5 to 20 characters maximum..';
 	
+	elseif(mb_ereg("[^a-zA-Z0-9_]", $tsData['user_pass'])) 
+	return '0: The password only allows uppercase and lowercase letters, numbers and _';
+	
 	elseif($tsData['user_pass'] != $tsData['user_repass'])
 	return '0: Sorry, but the two passwords don\'t match..';
 	
@@ -286,6 +289,9 @@ If for any reason you have problems with your account contact us from support <b
 	} else {
 	if(strlen($tsData['new_pass']) < 5 || strlen($tsData['new_pass']) > 40) 
 	return array('msg' => '0: Sorry the password must be between 5 and 40 characters maximum..');
+	
+	elseif(mb_ereg("[^a-zA-Z0-9_]", $tsData['new_pass'])) 
+	return array('msg' => '0: The password only allows uppercase and lowercase letters, numbers and _');
 	
 	elseif(strtolower($tsData['new_pass']) == $data['user_nick']) 
 	return array('msg' => '0: Sorry, the password can\'t be your own username..');
